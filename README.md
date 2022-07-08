@@ -27,7 +27,3 @@ Add definitions to your graph
 ## Icon
 
 [Dictionary icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/dictionary)
-
-## Thank You
-
-Huge thanks to [obsidian graph analysis](https://github.com/SkepticMystic/graph-analysis) for the inspiration and implementation of the adar algorithm!
