@@ -40,9 +40,9 @@ jobs:
 
       - name: Build Unpacked Plugin
         run: |
-          mkdir logseq-graph-analysis
-          cp package.json README.md logseq-graph-analysis
-          mv dist logseq-graph-analysis
+          mkdir logseq-dictionary
+          cp package.json README.md logseq-dictionary
+          mv dist logseq-dictionary
 
       - uses: jwalton/gh-find-current-pr@v1
         id: findPr
@@ -51,5 +51,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: logseq-graph-analysis-${{ steps.findPr.outputs.pr }}
-          path: logseq-graph-analysis
+          name: logseq-dictionary-${{ steps.findPr.outputs.pr }}
+          path: logseq-dictionary
