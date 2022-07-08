@@ -35,9 +35,6 @@ jobs:
       - name: Build
         run: nr build
 
-      - name: Test
-        run: nr test
-
       - name: Build Unpacked Plugin
         run: |
           mkdir logseq-dictionary
