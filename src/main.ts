@@ -31,16 +31,25 @@ async function main() {
       if (result.message) {
         throw new Error("word not found");
       }
-      const blocks = [
-        {
-          content: "phonetic",
-          children: [
-            {
-              content: result[0].phonetic,
-            },
-          ],
-        },
-      ].concat(
+      const firstAudio = result[0].phonetics.find((p: any) => p.audio);
+      const phonetic = firstAudio
+        ? {
+            content: "phonetic",
+            children: [
+              {
+                content: `${firstAudio.text}\n<audio controls><source src="${firstAudio.audio}"></audio>`,
+              },
+            ],
+          }
+        : {
+            content: "phonetic",
+            children: [
+              {
+                content: result[0].phonetic,
+              },
+            ],
+          };
+      const blocks = [phonetic].concat(
         result[0].meanings.map((meaning: any) => {
           return {
             content: meaning.partOfSpeech,
