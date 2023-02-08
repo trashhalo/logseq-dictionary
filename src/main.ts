@@ -34,21 +34,21 @@ async function main() {
       const firstAudio = result[0].phonetics.find((p: any) => p.audio);
       const phonetic = firstAudio
         ? {
-            content: "phonetic",
-            children: [
-              {
-                content: `${firstAudio.text}\n<audio controls><source src="${firstAudio.audio}"></audio>`,
-              },
-            ],
-          }
+          content: "phonetic",
+          children: [
+            {
+              content: `${firstAudio.text}\n<audio controls><source src="${firstAudio.audio}"></audio>`,
+            },
+          ],
+        }
         : {
-            content: "phonetic",
-            children: [
-              {
-                content: result[0].phonetic,
-              },
-            ],
-          };
+          content: "phonetic",
+          children: [
+            {
+              content: result[0].phonetic,
+            },
+          ],
+        };
       const blocks = [phonetic].concat(
         result[0].meanings.map((meaning: any) => {
           return {
@@ -56,6 +56,9 @@ async function main() {
             children: meaning.definitions.map((def: any) => {
               return {
                 content: def.definition,
+                children: def.example ? [{
+                  content: `*"${def.example}"*`,
+                }] : [],
               };
             }),
           };
